@@ -127,7 +127,7 @@ class TermuxStyleActivity : Activity() {
                 val buffer = ByteArray(`in`.available())
                 `in`.read(buffer)
                 val license = SpannableString(String(buffer))
-                Linkify.addLinks(license, Linkify.ALL)
+                Linkify.addLinks(license, Linkify.WEB_URLS)
                 val dialog = AlertDialog.Builder(this)
                         .setTitle(mCurrentSelectable.displayName)
                         .setMessage(license)

@@ -1,0 +1,22 @@
+name: Update Nerd Fonts
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Downloads nerd fonts
+      run: ./setup-nerd-fonts.sh
+
+    - name: Commit changes
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "[CI] Updating Nerd Fonts"
+        commit_options: --signoff
